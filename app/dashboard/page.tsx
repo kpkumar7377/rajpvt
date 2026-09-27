@@ -16,14 +16,17 @@ const sidebarOptions = [
   {
     key: "railway",
     label: "Indian Railway",
+    icon: "🚆",
   },
   {
     key: "fci",
     label: "FCI",
+    icon: "🌾",
   },
   {
     key: "defence",
     label: "Defence",
+    icon: "🛡️",
   },
 ];
 
@@ -32,85 +35,85 @@ const tileMap: Record<string, Tile[]> = {
     {
       label: "Pension Card",
       key: "pension",
-      accent: "from-blue-500 to-blue-600",
+      accent: "from-blue-600 via-blue-500 to-indigo-600",
       href: "/home/pension",
     },
     {
       label: "ID Card",
       key: "id",
-      accent: "from-green-500 to-green-600",
+      accent: "from-emerald-600 via-teal-500 to-emerald-700",
       href: "/home/identity",
     },
     {
       label: "Training Card",
       key: "training",
-      accent: "from-gray-500 to-gray-600",
+      accent: "from-slate-600 via-gray-600 to-zinc-700",
       href: "/home/training",
     },
     {
       label: "Notify Letter",
       key: "notify",
-      accent: "from-indigo-500 to-indigo-600",
+      accent: "from-indigo-600 via-violet-500 to-purple-600",
       href: "/home/notifyLetter/print",
     },
     {
       label: "Medical Letter",
       key: "medical",
-      accent: "from-red-500 to-red-600",
+      accent: "from-rose-600 via-red-500 to-rose-700",
       href: "/home/medicalLetter",
     },
     {
       label: "Joining Letter",
       key: "joining",
-      accent: "from-yellow-500 to-yellow-600",
+      accent: "from-amber-500 via-yellow-500 to-orange-500",
       href: "/home/joiningLetter/print",
     },
     {
       label: "Job Joining Letter",
       key: "jobJoining",
-      accent: "from-amber-500 to-amber-600",
+      accent: "from-amber-600 via-orange-500 to-amber-700",
       href: "/home/jobJoining/print",
     },
     {
       label: "Cancellation Letter",
       key: "cancellation",
-      accent: "from-teal-500 to-teal-600",
+      accent: "from-teal-600 via-cyan-600 to-teal-700",
       href: "/home/cancellation/print",
     },
     {
       label: "Reporting Letter",
       key: "reporting",
-      accent: "from-emerald-500 to-emerald-600",
+      accent: "from-emerald-600 via-green-600 to-teal-700",
       href: "/home/reportingLetter/print",
     },
     {
       label: "Envelope",
       key: "envelop",
-      accent: "from-cyan-500 to-cyan-600",
+      accent: "from-cyan-600 via-sky-500 to-blue-600",
       href: "/home/envelop/print",
     },
     {
       label: "Admit Card",
       key: "admitCard",
-      accent: "from-violet-500 to-violet-600",
+      accent: "from-violet-600 via-purple-600 to-indigo-700",
       href: "/home/admitCard/print",
     },
     {
       label: "Service Book",
       key: "serviceBook",
-      accent: "from-purple-500 to-purple-600",
+      accent: "from-purple-600 via-fuchsia-600 to-purple-800",
       href: "/home/serviceBook/print",
     },
     {
       label: "Manual",
       key: "manual",
-      accent: "from-amber-500 to-amber-600",
+      accent: "from-amber-600 via-orange-600 to-yellow-600",
       href: "/home/manual/print",
     },
     {
       label: "Aadhar Card",
       key: "aadhar",
-      accent: "from-amber-500 to-amber-600",
+      accent: "from-amber-500 via-orange-500 to-amber-600",
       href: "/home/aadhar",
     },
   ],
@@ -119,19 +122,19 @@ const tileMap: Record<string, Tile[]> = {
     {
       label: "FCI ID Card",
       key: "fci-id",
-      accent: "from-orange-500 to-orange-600",
+      accent: "from-orange-500 via-amber-600 to-orange-700",
       href: "#",
     },
     {
       label: "FCI Joining Letter",
       key: "fci-joining",
-      accent: "from-teal-500 to-teal-600",
+      accent: "from-teal-500 via-emerald-600 to-teal-700",
       href: "#",
     },
     {
       label: "FCI Medical Letter",
       key: "fci-medical",
-      accent: "from-pink-500 to-pink-600",
+      accent: "from-pink-500 via-rose-500 to-pink-700",
       href: "#",
     },
   ],
@@ -140,7 +143,7 @@ const tileMap: Record<string, Tile[]> = {
     {
       label: "Defence ID",
       key: "def-id",
-      accent: "from-gray-700 to-black",
+      accent: "from-zinc-800 via-stone-800 to-neutral-900",
       href: "#",
     },
   ],
@@ -159,8 +162,11 @@ export default function Page() {
 
   if (checking) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-lg font-semibold">Checking Authentication...</p>
+      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center gap-3 text-slate-100">
+        <div className="w-10 h-10 border-4 border-slate-700 border-t-blue-500 rounded-full animate-spin" />
+        <p className="text-sm font-medium tracking-wide text-slate-400">
+          Checking Authentication...
+        </p>
       </div>
     );
   }
@@ -170,66 +176,160 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
-      <aside className="w-64 bg-white shadow-lg border-r border-gray-200 p-6">
-        <h2 className="text-xl font-bold mb-6">Departments</h2>
+    <div className="min-h-screen bg-slate-50 flex text-slate-800">
+      {/* Sidebar */}
+      <aside className="w-72 bg-white/80 backdrop-blur-md border-r border-slate-200/80 p-6 flex flex-col justify-between shadow-sm">
+        <div>
+          {/* Logo / Header */}
+          <div className="flex items-center gap-3 pb-6 border-b border-slate-100 mb-6">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/20">
+              P
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold tracking-tight text-slate-900 leading-none">
+                Portal Management
+              </h2>
+              <span className="text-xs text-slate-400">Workspace</span>
+            </div>
+          </div>
 
-        <div className="space-y-3">
-          {sidebarOptions.map((item) => (
-            <button
-              key={item.key}
-              onClick={() => setActiveCategory(item.key)}
-              className={`w-full text-left px-4 cursor-pointer py-3 rounded-lg transition font-medium
-                ${
-                  activeCategory === item.key
-                    ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md"
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}
-            >
-              {item.label}
-            </button>
-          ))}
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 px-2 mb-3">
+            Departments
+          </p>
+
+          {/* Navigation Items */}
+          <div className="space-y-1.5">
+            {sidebarOptions.map((item) => {
+              const isActive = activeCategory === item.key;
+              const count = tileMap[item.key]?.length || 0;
+
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => setActiveCategory(item.key)}
+                  className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl cursor-pointer text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-slate-900 text-white shadow-md shadow-slate-900/10"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-base">{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+                      isActive
+                        ? "bg-slate-800 text-slate-300 border border-slate-700"
+                        : "bg-slate-100 text-slate-500"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Footer info card */}
+        <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/60 text-xs text-slate-500">
+          <p className="font-medium text-slate-700">Protected Workspace</p>
+          <p className="text-[11px] text-slate-400 mt-0.5">Session active</p>
         </div>
       </aside>
 
-      <main className="flex-1 p-8">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold capitalize">
-            {activeCategory === "railway"
-              ? "Indian Railway"
-              : activeCategory.toUpperCase()}
-          </h1>
-          <div className="flex flex-row items-center gap-2.5">
-            <button onClick={() => router.push("/home/send-email")} className="bg-teal-500 cursor-pointer text-white px-4 py-2 rounded-lg">
+      {/* Main Content Area */}
+      <main className="flex-1 flex flex-col min-w-0">
+        {/* Top Navbar */}
+        <header className="h-20 bg-white/70 backdrop-blur-md border-b border-slate-200/70 px-8 flex items-center justify-between sticky top-0 z-10">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+              {activeCategory === "railway"
+                ? "Indian Railway"
+                : activeCategory.toUpperCase()}
+            </h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Select a module or service document to get started
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => router.push("/home/send-email")}
+              className="inline-flex items-center gap-2 bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl text-sm font-medium shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer"
+            >
+              <svg
+                className="w-4 h-4 text-teal-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
               Email
             </button>
             <button
               onClick={handleLogout}
-              className="bg-red-500 cursor-pointer text-white px-4 py-2 rounded-lg"
+              className="inline-flex items-center gap-2 bg-red-50 text-red-600 border border-red-200/60 px-4 py-2 rounded-xl text-sm font-medium shadow-sm hover:bg-red-100/70 hover:border-red-300 transition-all cursor-pointer"
             >
+              <svg
+                className="w-4 h-4 text-red-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
               Logout
             </button>
           </div>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tiles.map(({ label, key, accent, href }) => (
-            <Link
-              href={href}
-              key={key}
-              className={`relative cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition duration-300 
-              bg-gradient-to-br ${accent} text-white p-8 min-h-[160px] flex items-center justify-center group`}
-            >
-              <span className="text-lg font-semibold group-hover:scale-105 transition">
-                {label}
-              </span>
+        {/* Tiles Grid */}
+        <section className="flex-1 p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {tiles.map(({ label, key, accent, href }) => (
+              <Link
+                href={href}
+                key={key}
+                className={`group relative overflow-hidden rounded-2xl p-6 min-h-[160px] flex flex-col justify-between bg-gradient-to-br ${accent} text-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
+              >
+                {/* Decorative background glow */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
-              <span className="absolute bottom-4 right-4 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur">
-                Open →
-              </span>
-            </Link>
-          ))}
-        </div>
+                <div className="flex items-start justify-between">
+                  <span className="text-xs font-medium uppercase tracking-wider bg-black/15 backdrop-blur-md px-2.5 py-1 rounded-md text-white/80">
+                    Module
+                  </span>
+                </div>
+
+                <div className="mt-6 flex items-end justify-between">
+                  <span className="text-lg font-semibold tracking-tight leading-snug group-hover:translate-x-0.5 transition-transform">
+                    {label}
+                  </span>
+
+                  <span className="text-xs font-semibold bg-white/20 group-hover:bg-white text-white group-hover:text-slate-900 px-3 py-1.5 rounded-lg backdrop-blur-md transition-all duration-300 flex items-center gap-1">
+                    Open
+                    <span className="group-hover:translate-x-0.5 transition-transform">
+                      →
+                    </span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );

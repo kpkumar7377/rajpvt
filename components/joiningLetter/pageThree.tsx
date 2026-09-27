@@ -7,6 +7,7 @@ interface OfficeMemoData {
   personnelName: string;
   personnelBranch: string;
   trainingZone: string;
+  division: string;
   personnelBranchNo: string;
   personnelDate: string;
   personnelZone: string;
@@ -48,8 +49,9 @@ export default function OfficeMemoPage3({ data }: { data: OfficeMemoData }) {
                 and that you are not married to a person having a living husband
                 or wife.
                 <br />
-                You are liable to be transferred anywhere within the East Coast
-                Railway as per administrative requirements.
+                You are liable to be transferred anywhere within the{" "}
+                {data.division?.toLocaleLowerCase()} as per administrative
+                requirements.
               </p>
             </div>
           </div>
