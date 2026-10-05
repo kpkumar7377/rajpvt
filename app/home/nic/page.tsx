@@ -142,14 +142,14 @@ export default function NicIDCard() {
                 loading="eager"
               />
             </div>
-            <p className="text-[3px] font-sans -mt-px text-gray-900">
+            <p className="text-[3px] font-serif -mt-px text-gray-900">
               सत्यमेव जयते
             </p>
           </div>
 
           {/* Main Red Title Bar */}
           <div className="w-full px-0.5 bg-[#ED1C24] rounded-lg flex items-center justify-center">
-            <h1 className="font-bold text-white text-[14px] tracking-wide font-serif">
+            <h1 className="font-bold font-serif text-white text-[14px] tracking-wide">
               Government of India
             </h1>
           </div>
@@ -184,7 +184,7 @@ export default function NicIDCard() {
         </div>
 
         {/* --- Footer Section (Flow-based, always visible on 1st print) --- */}
-        <div className="w-full mt-auto">
+        <div className="w-full mt-auto font-serif">
           <div className="px-[1mm] py-0.5 bg-[#ED1C24] text-white flex flex-col items-center leading-tight">
             <p className="text-[10px] font-semibold">{name}</p>
             <p className="text-[9px] font-semibold">{designation}</p>
@@ -196,7 +196,7 @@ export default function NicIDCard() {
             </p>
           </div>
 
-          <div className="w-full flex items-center justify-center bg-white">
+          <div className="w-full flex items-center justify-center px-5 pb-0.5 bg-[#2483C5]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/nic.png"
