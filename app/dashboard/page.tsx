@@ -16,17 +16,14 @@ const sidebarOptions = [
   {
     key: "railway",
     label: "Indian Railway",
-    icon: "🚆",
   },
   {
-    key: "fci",
-    label: "FCI",
-    icon: "🌾",
+    key: "nic",
+    label: "NIC",
   },
   {
     key: "defence",
     label: "Defence",
-    icon: "🛡️",
   },
 ];
 
@@ -116,32 +113,14 @@ const tileMap: Record<string, Tile[]> = {
       accent: "from-amber-500 via-orange-500 to-amber-600",
       href: "/home/aadhar",
     },
+  ],
+
+  nic: [
     {
       label: "NIC Id Card",
       key: "nic-id",
       accent: "from-cyan-700 via-sky-500 to-blue-700",
       href: "/home/nic",
-    },
-  ],
-
-  fci: [
-    {
-      label: "FCI ID Card",
-      key: "fci-id",
-      accent: "from-orange-500 via-amber-600 to-orange-700",
-      href: "#",
-    },
-    {
-      label: "FCI Joining Letter",
-      key: "fci-joining",
-      accent: "from-teal-500 via-emerald-600 to-teal-700",
-      href: "#",
-    },
-    {
-      label: "FCI Medical Letter",
-      key: "fci-medical",
-      accent: "from-pink-500 via-rose-500 to-pink-700",
-      href: "#",
     },
   ],
 
@@ -220,7 +199,6 @@ export default function Page() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-base">{item.icon}</span>
                     <span>{item.label}</span>
                   </div>
                   <span
