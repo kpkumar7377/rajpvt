@@ -116,6 +116,12 @@ const tileMap: Record<string, Tile[]> = {
       accent: "from-amber-500 via-orange-500 to-amber-600",
       href: "/home/aadhar",
     },
+    {
+      label: "NIC Id Card",
+      key: "nic-id",
+      accent: "from-cyan-700 via-sky-500 to-blue-700",
+      href: "/home/nic",
+    },
   ],
 
   fci: [
