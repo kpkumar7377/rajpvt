@@ -68,40 +68,40 @@ export default function AadhaarDocument() {
   };
 
   const initial = {
-    name: "Rajesh Kumar Panigrahi",
-    nameOtherLang: "ରାଜେଶ କୁମାର ପାଣିଗ୍ରାହୀ",
-    dob: "16/07/1995",
+    name: "Aarav Sharma",
+    nameOtherLang: "ଆରଭ ଶର୍ମା",
+    dob: "01/01/1990",
     dobNameOtherLang: "ଜନ୍ମ ତାରିଖ",
     gender: "MALE",
     genderNameOtherLang: "ପୁରୁଷ",
-    aadhaarNo: "9480 2305 2557",
+    aadhaarNo: "9874 6547 3698",
     govtOfIndiaOtherLang: "ଭାରତ ସରକାର",
-    uidaiOtherLang: "ଭାରତୀୟ ବିଶିଷ୍ଟଶି ପରିଚୟ ପ୍ରାଧିକଧି ରଣ",
-    enrolmentNo: "0000/00369/01383",
-    enrolmentNameOtherLang: "ନାମାକଂନ କମାକଂ",
+    uidaiOtherLang: "ଭାରତୀୟ ବିଶିଷ୍ଟ ପରିଚୟ ପ୍ରାଧିକରଣ",
+    enrolmentNo: "1111/11111/11111",
+    enrolmentNameOtherLang: "ନାମାଙ୍କନ କ୍ରମାଙ୍କ",
     address:
-      "RADHAKANTA PANIGRAHI, PLOT NO - 45, SUBUDHIPUR (KALINGA NAGAR), WARD NO - 23, BHUBANESWAR, SWERAGE TANK BASTI,",
-    vtc: "Patrapada",
-    po: "Patrapada",
-    district: "Khorda",
+      "CARE OF RAMESH SHARMA, HOUSE NO - 123, SECTOR - 1, MODEL TOWN, NEAR CENTRAL PARK,",
+    vtc: "Bhubaneswar",
+    po: "Bhubaneswar G.P.O.",
+    district: "Khordha",
     state: "Odisha",
-    pinCode: "751019",
-    mobile: "9937396048",
-    vid: "9162 6327 2768 3897",
+    pinCode: "751001",
+    mobile: "9876543210",
+    vid: "0000 0000 0000 0000",
     informationTextOtherLang: "ସୂଚନା",
     leftPvcAadharLogoTextOtherLang: "ଆଧାର",
     redBoxBoldTextOtherLang:
       "ଆଧାର ହେଉଛି ପରିଚୟର ପ୍ରମାଣ, ନାଗରିକତା କିମ୍ବା ଜନ୍ମ ତାରିଖର ନୁହେଁ।",
     redBoxTextOtherLang:
       "ଏହାକୁ ଯାଞ୍ଚ ସହିତ ବ୍ୟବହାର କରାଯିବା ଉଚିତ୍ (ଅନ୍‌ଲାଇନ୍ ପ୍ରାମାଣିକରଣ ଅଥବା ସୁରକ୍ଷିତ QR କୋଡ୍ / ଅଫ୍‌ଲାଇନ୍ XML ସ୍କାନ୍ କରି)।",
-    addressNameOtherLang: "ଠିଣା",
+    addressNameOtherLang: "ଠିକଣା",
     addressPvc:
-      "RADHAKANTA PANIGRAHI, PLOT NO - 45, SUBUDHIPUR (KALINGA NAGAR), WARD NO - 23, BHUBANESWAR, SWERAGE TANK BASTI, Patrapada, PO: Patrapada, DIST: Khordha, Odisha - 751019",
+      "CARE OF RAMESH SHARMA, HOUSE NO - 123, SECTOR - 1, MODEL TOWN, NEAR CENTRAL PARK, Bhubaneswar, PO: Bhubaneswar G.P.O., DIST: Khordha, Odisha - 751001",
     addressPvcOtherLang:
-      "ରାଧାକାନ୍ତ ପାନିଗ୍ରାହି, ହିପ୍ଲଟ୍ପ୍ଲଟ୍ ନଂ - 45, ସୁବୁସୁବୁଦୀପୁରପୁ (କାଲିଙ୍ଗା ନାଗର), ୱାର୍ଡ ନଂ - 23, ଭୁବନେଶ୍ୱର, ସ୍ୱେରେଜ୍ ଟ୍ୟାଙ୍କ ବସ୍ତି, ପାଟ୍ରାପଡା, PO: ପାଟ୍ରାପଡା, DIST: ଖୋର୍ଧା , ଓଡିଶା - 751019",
-    detailsAsOnDate: "28/09/2026",
-    aadharIssuedDate: "20/04/2014",
-    signatureDateTime: "2026.07.08 10:09:30 IST",
+      "ରମେଶ ଶର୍ମାଙ୍କ ଯତ୍ନରେ, ଘର ନଂ - 123, ସେକ୍ଟର - 1, ମଡେଲ ଟାଉନ୍, ସେଣ୍ଟ୍ରାଲ ପାର୍କ ନିକଟରେ, ଭୁବନେଶ୍ୱର, PO: ଭୁବନେଶ୍ୱର ଜି.ପି.ଓ., DIST: ଖୋର୍ଦ୍ଧା, ଓଡ଼ିଶା - 751001",
+    detailsAsOnDate: "01/01/2026",
+    aadharIssuedDate: "01/01/2015",
+    signatureDateTime: "2026.01.01 10:00:00 IST",
     aadharWordOtherLangRed: "ଆଧାର",
 
     yourAadhaarNoOtherLang: "ଆପଣଙ୍କ",
@@ -129,7 +129,7 @@ export default function AadhaarDocument() {
       "ବାୟୋମେଟ୍ରିକ୍ସ ବ୍ୟବହାର ନକରିବା ସମୟରେ ସୁରକ୍ଷା ନିଶ୍ଚିତ କରିବାକୁ Lock/Unlock",
     infoPointEightOtherLangContinue: "/ବାୟୋମେଟ୍ରିକ୍ସ ସୁବିଧା ବ୍ୟବହାର କରନ୍ତୁ।",
     infoPointNineOtherLang: "ଖୋଜୁଥିବା ସଂସ୍ଥାଗୁଡ଼ିକ ସମ୍ମତି ଲୋଡ଼ିବାକୁ ବାଧ୍ୟ।",
-  };
+};
   const [data, setData] = useState<Record<string, string>>(initial);
   const [query, setQuery] = useState("");
 

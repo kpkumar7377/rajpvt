@@ -18,8 +18,8 @@ const sidebarOptions = [
     label: "Indian Railway",
   },
   {
-    key: "nic",
-    label: "NIC",
+    key: "identities",
+    label: "Identities",
   },
   {
     key: "defence",
@@ -107,20 +107,26 @@ const tileMap: Record<string, Tile[]> = {
       accent: "from-amber-600 via-orange-600 to-yellow-600",
       href: "/home/manual/print",
     },
+  ],
+
+  identities: [
+    {
+      label: "NIC Id Card",
+      key: "nic-id",
+      accent: "from-cyan-700 via-sky-500 to-blue-700",
+      href: "/home/nic",
+    },
     {
       label: "Aadhar Card",
       key: "aadhar",
       accent: "from-amber-500 via-orange-500 to-amber-600",
       href: "/home/aadhar",
     },
-  ],
-
-  nic: [
     {
-      label: "NIC Id Card",
-      key: "nic-id",
-      accent: "from-cyan-700 via-sky-500 to-blue-700",
-      href: "/home/nic",
+      label: "Pan Card",
+      key: "pan",
+      accent: "from-amber-500 via-orange-500 to-amber-600",
+      href: "/home/pan",
     },
   ],
 
