@@ -58,8 +58,10 @@ export default function A4PrintPage() {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRefSign = useRef<HTMLInputElement>(null);
+  const inputRefHolo = useRef<HTMLInputElement>(null);
   const [photo, setPhoto] = useState<string | null>(null);
   const [photoSign, setPhotoSign] = useState<string | null>(null);
+  const [photoHolo, setPhotoHolo] = useState<string | null>(null);
   const [qrValue, setQrValue] = useState<string | null>(null);
 
   const initial = {
@@ -129,6 +131,13 @@ export default function A4PrintPage() {
     const file = e.target.files?.[0];
     if (!file || !file.type.startsWith("image/")) return;
     setPhotoSign(URL.createObjectURL(file));
+    e.target.value = "";
+  };
+
+  const handleHoloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !file.type.startsWith("image/")) return;
+    setPhotoHolo(URL.createObjectURL(file));
     e.target.value = "";
   };
 
@@ -238,6 +247,14 @@ export default function A4PrintPage() {
         type="file"
         accept="image/*"
         onChange={handleSignChange}
+        className="hidden"
+      />
+
+      <input
+        ref={inputRefHolo}
+        type="file"
+        accept="image/*"
+        onChange={handleHoloChange}
         className="hidden"
       />
 
@@ -584,11 +601,34 @@ export default function A4PrintPage() {
                   style={{ backgroundImage: "url('/panback.jpg')" }}
                 >
                   <div className="w-full flex justify-end -mb-1">
-                    <img
+                    {/* <img
                       src="/hologram.png"
                       alt="hologram"
                       className="w-[18mm] h-auto mr-1.5"
-                    />
+                    /> */}
+
+                    <button
+                      type="button"
+                      onClick={() => inputRefHolo.current?.click()}
+                      aria-label={
+                        photoHolo ? "Change hologram" : "Upload hologram"
+                      }
+                      className="w-[18mm] h-[18mm] mr-1.5 border border-slate-400 rounded-xs flex flex-col items-center justify-center bg-slate-100 flex-shrink-0 overflow-hidden cursor-pointer"
+                    >
+                      {photoHolo ? (
+                        <img
+                          src={photoHolo}
+                          alt="Hologram"
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <>
+                          <span className="text-[4px] text-slate-500 font-bold mt-0.5">
+                            PHOTO
+                          </span>
+                        </>
+                      )}
+                    </button>
                   </div>
                   <p className="italic font-bold text-[8.5px] tracking-tight">
                     In case this card is lost / found, kindly inform / return to

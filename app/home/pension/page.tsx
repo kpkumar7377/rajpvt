@@ -14,6 +14,7 @@ export default function NPSCard() {
   const [npsNumber, setNpsNumber] = useState("110000123456");
   const [photo, setPhoto] = useState<string | null>(null);
   const [signature, setSignature] = useState<string | null>(null);
+  const [hologram, setHologram] = useState<string | null>(null);
 
   const handleUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -106,6 +107,15 @@ export default function NPSCard() {
               type="file"
               accept="image/*"
               onChange={(e) => handleUpload(e, setSignature)}
+              className="border w-full p-2 rounded text-sm"
+            />
+          </div>
+          <div>
+            <label>Upload Hologram</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleUpload(e, setHologram)}
               className="border w-full p-2 rounded text-sm"
             />
           </div>
@@ -238,14 +248,19 @@ export default function NPSCard() {
           {/* Right Section */}
           <div className="flex flex-col items-end justify-start w-[120px]">
             {/* Hologram Box */}
-            <div className="w-[50px] h-[50px] bg-gray-200 border ml-2 border-gray-400 rounded-sm overflow-hidden">
+            <div className="w-12.5 h-12.5 ml-2 rounded-sm overflow-hidden">
               {/* Hologram image if you want */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/hologram.png"
-                alt="Hologram"
-                className="w-full h-full object-cover opacity-70"
-              />
+              {hologram ? (
+                <img
+                  src={hologram}
+                  // src={hologram || "/hologram.png"}
+                  alt="Hologram"
+                  className="w-full h-full object-cover opacity-70"
+                />
+              ) : (
+                <div className="text-gray-400 text-xs h-12.5 w-12.5 bg-white"></div>
+              )}
             </div>
 
             {/* Photo + Vertical Number Row */}
