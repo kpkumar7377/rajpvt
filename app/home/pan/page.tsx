@@ -58,10 +58,10 @@ export default function A4PrintPage() {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRefSign = useRef<HTMLInputElement>(null);
-  const inputRefHolo = useRef<HTMLInputElement>(null);
+  // const inputRefHolo = useRef<HTMLInputElement>(null);
   const [photo, setPhoto] = useState<string | null>(null);
   const [photoSign, setPhotoSign] = useState<string | null>(null);
-  const [photoHolo, setPhotoHolo] = useState<string | null>(null);
+  // const [photoHolo, setPhotoHolo] = useState<string | null>(null);
   const [qrValue, setQrValue] = useState<string | null>(null);
 
   const initial = {
@@ -134,12 +134,12 @@ export default function A4PrintPage() {
     e.target.value = "";
   };
 
-  const handleHoloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || !file.type.startsWith("image/")) return;
-    setPhotoHolo(URL.createObjectURL(file));
-    e.target.value = "";
-  };
+  // const handleHoloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (!file || !file.type.startsWith("image/")) return;
+  //   setPhotoHolo(URL.createObjectURL(file));
+  //   e.target.value = "";
+  // };
 
   return (
     <div className="print-parent min-h-screen bg-neutral-100 p-8 flex flex-col items-center">
@@ -250,13 +250,13 @@ export default function A4PrintPage() {
         className="hidden"
       />
 
-      <input
+      {/* <input
         ref={inputRefHolo}
         type="file"
         accept="image/*"
         onChange={handleHoloChange}
         className="hidden"
-      />
+      /> */}
 
       {/* A4 Container */}
       <div
@@ -601,13 +601,13 @@ export default function A4PrintPage() {
                   style={{ backgroundImage: "url('/panback.jpg')" }}
                 >
                   <div className="w-full flex justify-end -mb-1">
-                    {/* <img
-                      src="/hologram.png"
+                    <img
+                      src="/hologramPan.jpeg"
                       alt="hologram"
-                      className="w-[18mm] h-auto mr-1.5"
-                    /> */}
+                      className="w-[18mm] h-auto rounded-sm mr-1.5"
+                    />
 
-                    <button
+                    {/* <button
                       type="button"
                       onClick={() => inputRefHolo.current?.click()}
                       aria-label={
@@ -628,7 +628,7 @@ export default function A4PrintPage() {
                           </span>
                         </>
                       )}
-                    </button>
+                    </button> */}
                   </div>
                   <p className="italic font-bold text-[8.5px] tracking-tight">
                     In case this card is lost / found, kindly inform / return to

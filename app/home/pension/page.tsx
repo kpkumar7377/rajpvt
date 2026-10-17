@@ -14,7 +14,7 @@ export default function NPSCard() {
   const [npsNumber, setNpsNumber] = useState("110000123456");
   const [photo, setPhoto] = useState<string | null>(null);
   const [signature, setSignature] = useState<string | null>(null);
-  const [hologram, setHologram] = useState<string | null>(null);
+  // const [hologram, setHologram] = useState<string | null>(null);
 
   const handleUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -110,7 +110,7 @@ export default function NPSCard() {
               className="border w-full p-2 rounded text-sm"
             />
           </div>
-          <div>
+          {/* <div>
             <label>Upload Hologram</label>
             <input
               type="file"
@@ -118,7 +118,7 @@ export default function NPSCard() {
               onChange={(e) => handleUpload(e, setHologram)}
               className="border w-full p-2 rounded text-sm"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -251,16 +251,21 @@ export default function NPSCard() {
             <div className="w-12.5 h-12.5 ml-2 rounded-sm overflow-hidden">
               {/* Hologram image if you want */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              {hologram ? (
+              {/* {hologram ? (
                 <img
-                  src={hologram}
-                  // src={hologram || "/hologram.png"}
+                  // src={hologram}
+                  src={"/hologramPension.jpeg"}
                   alt="Hologram"
                   className="w-full h-full object-cover opacity-70"
                 />
               ) : (
                 <div className="text-gray-400 text-xs h-12.5 w-12.5 bg-white"></div>
-              )}
+              )} */}
+              <img
+                src={"/hologramPension.jpeg"}
+                alt="Hologram"
+                className="w-full h-full object-cover opacity-70"
+              />
             </div>
 
             {/* Photo + Vertical Number Row */}
