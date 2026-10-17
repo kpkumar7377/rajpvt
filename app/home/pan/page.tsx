@@ -333,7 +333,7 @@ export default function A4PrintPage() {
                 <img
                   src={photoSign}
                   alt="Profile"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               ) : (
                 <>
@@ -356,7 +356,7 @@ export default function A4PrintPage() {
                 <img
                   src={photo}
                   alt="Profile"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full"
                 />
               ) : (
                 <>
@@ -526,7 +526,7 @@ export default function A4PrintPage() {
                       <img
                         src={photo}
                         alt="Profile"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full"
                       />
                     ) : (
                       <>
@@ -551,7 +551,7 @@ export default function A4PrintPage() {
                       <img
                         src={photoSign}
                         alt="Profile"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain"
                       />
                     ) : (
                       <>
