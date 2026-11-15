@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import StampPicker from "@/components/StampPicker"; // adjust path if needed
 
 interface OfficeMemoData {
   candidateImg: string;
@@ -16,6 +18,9 @@ interface OfficeMemoData {
 }
 
 export default function OfficeMemoPage3({ data }: { data: OfficeMemoData }) {
+  const [stamp, setStamp] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col items-center">
       <div
@@ -80,13 +85,44 @@ export default function OfficeMemoPage3({ data }: { data: OfficeMemoData }) {
                 </span>
               </p>
             </div>
+
             <div className="flex flex-col items-end mt-20 text-[14px] font-semibold">
               <p>{data.personnelName}</p>
               <p>Asst. Personnel Officer (T)/{data.personnelBranch}</p>
               <p>(for Divisional Personnel Officer/{data.personnelBranch})</p>
               <p>{data.trainingZone}</p>
+
+              {/* Stamp area, below "Northern Railway" */}
+              <div className="mt-2 flex flex-col items-end absolute bottom-[140mm] right-[15mm]">
+                {stamp ? (
+                  // Click the stamp to change it (hover effect is not printed)
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={stamp}
+                    alt="Stamp"
+                    title="Click to change stamp"
+                    onClick={() => setPickerOpen(true)}
+                    className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
+                  />
+                ) : (
+                  // Upload button: only visible on screen, never in print
+                  <div
+                    className="print:hidden text-[12px] font-normal"
+                    data-html2canvas-ignore="true"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setPickerOpen(true)}
+                      className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
+                    >
+                      Upload Stamp
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+
           <div className="m-5 text-[13px] leading-[1.55]">
             <p>
               Divisional Office <br />
@@ -124,6 +160,13 @@ export default function OfficeMemoPage3({ data }: { data: OfficeMemoData }) {
           <p>{data.footerHindi}</p>
         </div>
       </div>
+
+      {/* Popup: opened by the Upload button or by clicking the stamp */}
+      <StampPicker
+        open={pickerOpen}
+        onClose={() => setPickerOpen(false)}
+        onSelect={(_file, url) => setStamp(url)}
+      />
     </div>
   );
 }

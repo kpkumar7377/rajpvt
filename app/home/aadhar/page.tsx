@@ -49,6 +49,23 @@ export default function AadhaarDocument() {
   const [photo, setPhoto] = useState<string | null>(null);
   const [numericString, setNumericString] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const MIN_SIZE = 4;
+  const MAX_SIZE = 10;
+  const STEP = 0.2;
+
+  // inside your component
+  const [otherLangSize, setOtherLangSize] = useState(7); // starting size in px
+  const [otherPointsLangSize, setOtherPointsLangSize] = useState(10); // starting size in px
+
+  const decrease = () =>
+    setOtherLangSize((s) => Math.max(MIN_SIZE, +(s - STEP).toFixed(1)));
+  const increase = () =>
+    setOtherLangSize((s) => Math.min(MAX_SIZE, +(s + STEP).toFixed(1)));
+
+  const decreasePoints = () =>
+    setOtherPointsLangSize((s) => Math.max(MIN_SIZE, +(s - STEP).toFixed(1)));
+  const increasePoints = () =>
+    setOtherPointsLangSize((s) => Math.min(MAX_SIZE, +(s + STEP).toFixed(1)));
 
   useEffect(() => {
     return () => {
@@ -129,7 +146,7 @@ export default function AadhaarDocument() {
       "ବାୟୋମେଟ୍ରିକ୍ସ ବ୍ୟବହାର ନକରିବା ସମୟରେ ସୁରକ୍ଷା ନିଶ୍ଚିତ କରିବାକୁ Lock/Unlock",
     infoPointEightOtherLangContinue: "/ବାୟୋମେଟ୍ରିକ୍ସ ସୁବିଧା ବ୍ୟବହାର କରନ୍ତୁ।",
     infoPointNineOtherLang: "ଖୋଜୁଥିବା ସଂସ୍ଥାଗୁଡ଼ିକ ସମ୍ମତି ଲୋଡ଼ିବାକୁ ବାଧ୍ୟ।",
-};
+  };
   const [data, setData] = useState<Record<string, string>>(initial);
   const [query, setQuery] = useState("");
 
@@ -225,6 +242,24 @@ export default function AadhaarDocument() {
             <span className="text-xs font-semibold tracking-wide text-slate-700">
               A4 Sheet (210mm × 297mm) | Centered Document (174.20mm × 235mm)
             </span>
+          </div>
+
+          <div className="flex flex-col gap-2 mb-2 print:hidden">
+            <SizeAdjuster
+              label="PVC red box text size adjust"
+              value={otherLangSize}
+              onDecrease={decrease}
+              onIncrease={increase}
+              onReset={() => setOtherLangSize(7)} // your default
+            />
+
+            <SizeAdjuster
+              label="Information points text size adjust"
+              value={otherPointsLangSize}
+              onDecrease={decreasePoints}
+              onIncrease={increasePoints}
+              onReset={() => setOtherPointsLangSize(10)} // your default
+            />
           </div>
 
           {/* Toolbar */}
@@ -649,7 +684,10 @@ export default function AadhaarDocument() {
                     {data.informationTextOtherLang} / INFORMATION
                   </h2>
                   <div className="m-2.5 rounded-none border border-black/40 bg-white p-1.5 font-sans">
-                    <ul className="text-[10px] leading-tight">
+                    <ul
+                      style={{ fontSize: `${otherPointsLangSize}px` }}
+                      className="leading-tight"
+                    >
                       <li className="flex items-start gap-1.5 mb-1">
                         <span className="mt-1 h-1.5 w-1.5 shrink-0 bg-[#e11d48]" />
                         <span>
@@ -962,18 +1000,27 @@ export default function AadhaarDocument() {
                         {data.genderNameOtherLang}/ {data.gender}
                       </p>
                     </div>
+                    {/* Controls: not printed, not part of the card */}
+
                     <div className="border-[0.5px] border-red-600 mt-1 text-[7px] tracking-[0.4px] p-0.5 rounded-[2px] leading-[1.15]">
-                      <span className="font-bold">
-                        {data.redBoxBoldTextOtherLang}
-                      </span>{" "}
-                      {data.redBoxTextOtherLang}
-                      <br />
-                      <span className="font-bold">
-                        Aadhaar is proof of identity, not of citizenship or date
-                        of birth.
-                      </span>{" "}
-                      It should be used with verification (online authentication
-                      or by scanning the secure QR code / offline XML).
+                      {/* Other language text: size controlled by the buttons */}
+                      <div style={{ fontSize: `${otherLangSize}px` }}>
+                        <span className="font-bold">
+                          {data.redBoxBoldTextOtherLang}
+                        </span>{" "}
+                        {data.redBoxTextOtherLang}
+                      </div>
+
+                      {/* English text stays fixed */}
+                      <div>
+                        <span className="font-bold">
+                          Aadhar is proof of identity, not of citizenship or
+                          date of birth.
+                        </span>{" "}
+                        It should be used with verification (online
+                        authentication or by scanning the secure QR code /
+                        offline XML).
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -984,7 +1031,11 @@ export default function AadhaarDocument() {
                   </h2>
                   <div className="text-center border-t border-red-600 py-1 flex justify-center">
                     <p className="text-[14px] tracking-widest font-mono leading-none">
-                      ମୋ <span className="text-red-600">ଆଧାର</span>, ମୋ ପରିଚୟ
+                      {data.myAadharSloganOtherLang}{" "}
+                      <span className="text-red-600">
+                        {data.aadharWordOtherLangRed}
+                      </span>
+                      , {data.myAadharSloganOtherLangContinue}
                     </p>
                   </div>
                 </div>
@@ -1122,6 +1173,67 @@ export default function AadhaarDocument() {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- Reusable control card ---------- */
+function SizeAdjuster({
+  label,
+  value,
+  onDecrease,
+  onIncrease,
+  onReset,
+}: {
+  label: string;
+  value: number;
+  onDecrease: () => void;
+  onIncrease: () => void;
+  onReset?: () => void;
+}) {
+  return (
+    <div
+      className="flex items-center justify-between gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm print:hidden"
+      data-html2canvas-ignore="true"
+    >
+      <span className="text-xs font-medium text-gray-700">{label}</span>
+
+      <div className="flex items-center gap-1">
+        <div className="flex items-center overflow-hidden rounded-md border border-gray-300 bg-gray-50">
+          <button
+            type="button"
+            onClick={onDecrease}
+            className="flex h-7 w-7 items-center justify-center text-base font-semibold text-gray-700 transition hover:bg-gray-200 active:bg-gray-300"
+            aria-label={`Decrease ${label}`}
+          >
+            −
+          </button>
+
+          <span className="w-14 border-x border-gray-300 bg-white py-1 text-center text-xs font-semibold tabular-nums text-gray-900">
+            {value}px
+          </span>
+
+          <button
+            type="button"
+            onClick={onIncrease}
+            className="flex h-7 w-7 items-center justify-center text-base font-semibold text-gray-700 transition hover:bg-gray-200 active:bg-gray-300"
+            aria-label={`Increase ${label}`}
+          >
+            +
+          </button>
+        </div>
+
+        {onReset && (
+          <button
+            type="button"
+            onClick={onReset}
+            className="ml-1 rounded-md px-2 py-1 text-[11px] text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
+            aria-label={`Reset ${label}`}
+          >
+            Reset
+          </button>
+        )}
       </div>
     </div>
   );
