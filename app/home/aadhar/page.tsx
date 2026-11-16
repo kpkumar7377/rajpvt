@@ -96,8 +96,9 @@ export default function AadhaarDocument() {
     uidaiOtherLang: "ଭାରତୀୟ ବିଶିଷ୍ଟ ପରିଚୟ ପ୍ରାଧିକରଣ",
     enrolmentNo: "1111/11111/11111",
     enrolmentNameOtherLang: "ନାମାଙ୍କନ କ୍ରମାଙ୍କ",
+    coName: "C/O Ramesh Sharma",
     address:
-      "CARE OF RAMESH SHARMA, HOUSE NO - 123, SECTOR - 1, MODEL TOWN, NEAR CENTRAL PARK,",
+      "HOUSE NO - 123, SECTOR - 1, MODEL TOWN, NEAR CENTRAL PARK,",
     vtc: "Bhubaneswar",
     po: "Bhubaneswar G.P.O.",
     district: "Khordha",
@@ -536,6 +537,7 @@ export default function AadhaarDocument() {
                       <div className="space-y-0.3 text-[10px] font-normal">
                         <p>{data.nameOtherLang}</p>
                         <p>{data.name}</p>
+                        <p className="w-2/4">{data.coName}</p>
                         <p className="w-2/4">{data.address}</p>
                         <p>VTC: {data.vtc},</p>
                         <p>PO: {data.po},</p>
