@@ -994,7 +994,7 @@ export default function AadhaarDocument() {
                       <p>{data.nameOtherLang}</p>
                       <p>{data.name}</p>
                       <p>
-                        <span>ଜନ୍ମ ତାରିଖ /DOB:</span> {data.dob}
+                        <span>{data.dobNameOtherLang} /DOB:</span> {data.dob}
                       </p>
                       <p>
                         {data.genderNameOtherLang}/ {data.gender}
