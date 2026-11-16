@@ -246,7 +246,7 @@ export default function Page() {
 
           <div className="flex items-center gap-3">
             <button
-              onClick={() => router.push("/home/send-email")}
+              onClick={() => router.push("/home/uploadedFiles")}
               className="inline-flex items-center gap-2 bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl text-sm font-medium shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer"
             >
               <svg
@@ -262,7 +262,7 @@ export default function Page() {
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              Email
+              Uploaded Files
             </button>
             <button
               onClick={handleLogout}
