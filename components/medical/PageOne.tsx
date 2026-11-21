@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { QRCodeCanvas } from "qrcode.react";
+import StampPicker from "@/components/StampPicker"; // adjust path if needed
+import { useState } from "react";
 
 interface OfficeMemoData {
   boardCityHindi: string;
@@ -30,6 +32,15 @@ interface OfficeMemoData {
 }
 
 export default function OfficeMemoPage1({ data }: { data: OfficeMemoData }) {
+  const [stamp, setStamp] = useState<string | null>(null);
+  const [stamp1, setStamp1] = useState<string | null>(null);
+  const [stamp2, setStamp2] = useState<string | null>(null);
+  const [stamp3, setStamp3] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerOpen1, setPickerOpen1] = useState(false);
+  const [pickerOpen2, setPickerOpen2] = useState(false);
+  const [pickerOpen3, setPickerOpen3] = useState(false);
+
   return (
     <div className=" min-h-screen flex flex-col items-center">
       <div
@@ -220,24 +231,6 @@ export default function OfficeMemoPage1({ data }: { data: OfficeMemoData }) {
               </div>
             </div>
           </div>
-          {/* <div className="mt-1 text-[12px] leading-relaxed">
-            <p className="font-bold">
-              कृपया इसे फाड़कर उम्मीदवार को लौटा दें। / Please tear off and
-              return to the candidate
-            </p>
-          </div>
-          <div className="mt-5 flex flex-row justify-between items-start leading-relaxed">
-            <p className="font-bold text-[14px]">
-              रेलवे भर्ती बोर्ड, {data.boardCityHindi}
-              <br />
-              RAILWAY RECRUITMENT BOARD,{data.boardCity}
-            </p>
-            <div className="border border-black p-2">
-              <p className="font-semibold text-[16px]">
-                CALL LETTER MEDICAL EXAMINATION
-              </p>
-            </div>
-          </div> */}
 
           <div className="border border-black p-1 mt-2 text-[11px] leading-relaxed">
             <p>
@@ -265,7 +258,137 @@ export default function OfficeMemoPage1({ data }: { data: OfficeMemoData }) {
           <p>{data.footer}</p>
           <p>{data.footerHindi}</p>
         </div>
+
+        <div className="mt-2 flex flex-col items-end absolute top-[25mm] right-[80mm] z-50">
+          {stamp ? (
+            // Click the stamp to change it (hover effect is not printed)
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={stamp}
+              alt="Stamp"
+              title="Click to change stamp"
+              onClick={() => setPickerOpen(true)}
+              className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
+            />
+          ) : (
+            // Upload button: only visible on screen, never in print
+            <div
+              className="print:hidden text-[12px] font-normal"
+              data-html2canvas-ignore="true"
+            >
+              <button
+                type="button"
+                onClick={() => setPickerOpen(true)}
+                className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
+              >
+                Upload Stamp 1
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="mt-2 flex flex-col items-end absolute bottom-[12mm] left-[15mm] z-50">
+          {stamp1 ? (
+            // Click the stamp to change it (hover effect is not printed)
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={stamp1}
+              alt="Stamp1"
+              title="Click to change stamp 2"
+              onClick={() => setPickerOpen1(true)}
+              className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
+            />
+          ) : (
+            // Upload button: only visible on screen, never in print
+            <div
+              className="print:hidden text-[12px] font-normal"
+              data-html2canvas-ignore="true"
+            >
+              <button
+                type="button"
+                onClick={() => setPickerOpen1(true)}
+                className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
+              >
+                Upload Stamp 2
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="mt-2 flex flex-col items-end absolute bottom-[90mm] left-[80mm] z-50">
+          {stamp2 ? (
+            // Click the stamp to change it (hover effect is not printed)
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={stamp2}
+              alt="Stamp2"
+              title="Click to change stamp 2"
+              onClick={() => setPickerOpen2(true)}
+              className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
+            />
+          ) : (
+            // Upload button: only visible on screen, never in print
+            <div
+              className="print:hidden text-[12px] font-normal"
+              data-html2canvas-ignore="true"
+            >
+              <button
+                type="button"
+                onClick={() => setPickerOpen2(true)}
+                className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
+              >
+                Upload Stamp 3
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="mt-2 flex flex-col items-end absolute bottom-[90mm] right-[20mm] z-50">
+          {stamp3 ? (
+            // Click the stamp to change it (hover effect is not printed)
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={stamp3}
+              alt="Stamp3"
+              title="Click to change stamp 3"
+              onClick={() => setPickerOpen3(true)}
+              className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
+            />
+          ) : (
+            // Upload button: only visible on screen, never in print
+            <div
+              className="print:hidden text-[12px] font-normal"
+              data-html2canvas-ignore="true"
+            >
+              <button
+                type="button"
+                onClick={() => setPickerOpen3(true)}
+                className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
+              >
+                Upload Stamp 4
+              </button>
+            </div>
+          )}
+        </div>
       </div>
+
+      <StampPicker
+        open={pickerOpen}
+        onClose={() => setPickerOpen(false)}
+        onSelect={(_file, url) => setStamp(url)}
+      />
+      <StampPicker
+        open={pickerOpen1}
+        onClose={() => setPickerOpen1(false)}
+        onSelect={(_file, url) => setStamp1(url)}
+      />
+      <StampPicker
+        open={pickerOpen2}
+        onClose={() => setPickerOpen2(false)}
+        onSelect={(_file, url) => setStamp2(url)}
+      />
+      <StampPicker
+        open={pickerOpen3}
+        onClose={() => setPickerOpen3(false)}
+        onSelect={(_file, url) => setStamp3(url)}
+      />
     </div>
   );
 }

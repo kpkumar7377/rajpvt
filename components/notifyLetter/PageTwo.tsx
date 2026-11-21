@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import StampPicker from "@/components/StampPicker";
+
 interface OfficeMemoPage1Props {
   data: {
     dvAddress1: string;
@@ -13,6 +16,9 @@ interface OfficeMemoPage1Props {
 }
 
 export default function OfficeMemoPage1({ data }: OfficeMemoPage1Props) {
+  const [stamp1, setStamp1] = useState<string | null>(null);
+  const [pickerOpen1, setPickerOpen1] = useState(false);
+
   return (
     <div className=" min-h-screen flex flex-col items-center">
       <div
@@ -122,7 +128,40 @@ export default function OfficeMemoPage1({ data }: OfficeMemoPage1Props) {
           <p>{data.footer}</p>
           <p>{data.footerHindi}</p>
         </div>
+
+        <div className="mt-2 flex flex-col items-end absolute bottom-[20mm] left-[15mm] z-50">
+          {stamp1 ? (
+            // Click the stamp to change it (hover effect is not printed)
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={stamp1}
+              alt="Stamp1"
+              title="Click to change stamp 2"
+              onClick={() => setPickerOpen1(true)}
+              className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
+            />
+          ) : (
+            // Upload button: only visible on screen, never in print
+            <div
+              className="print:hidden text-[12px] font-normal"
+              data-html2canvas-ignore="true"
+            >
+              <button
+                type="button"
+                onClick={() => setPickerOpen1(true)}
+                className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
+              >
+                Upload Stamp
+              </button>
+            </div>
+          )}
+        </div>
       </div>
+      <StampPicker
+        open={pickerOpen1}
+        onClose={() => setPickerOpen1(false)}
+        onSelect={(_file, url) => setStamp1(url)}
+      />
     </div>
   );
 }
