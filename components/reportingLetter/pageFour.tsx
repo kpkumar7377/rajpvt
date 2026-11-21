@@ -14,9 +14,7 @@ interface OfficeMemoData {
 }
 
 export default function OfficeMemoPage4({ data }: { data: OfficeMemoData }) {
-  const [stamp, setStamp] = useState<string | null>(null);
   const [stamp1, setStamp1] = useState<string | null>(null);
-  const [pickerOpen, setPickerOpen] = useState(false);
   const [pickerOpen1, setPickerOpen1] = useState(false);
 
   return (
@@ -151,33 +149,6 @@ export default function OfficeMemoPage4({ data }: { data: OfficeMemoData }) {
           <p>{data.footerHindi}</p>
         </div>
 
-        <div className="mt-2 flex flex-col items-end absolute bottom-[85mm] left-[15mm] z-50">
-          {stamp ? (
-            // Click the stamp to change it (hover effect is not printed)
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={stamp}
-              alt="Stamp"
-              title="Click to change stamp 2"
-              onClick={() => setPickerOpen(true)}
-              className="h-[160px] w-[160px] object-contain cursor-pointer hover:outline hover:outline-2 hover:outline-dashed hover:outline-blue-400 print:outline-none"
-            />
-          ) : (
-            // Upload button: only visible on screen, never in print
-            <div
-              className="print:hidden text-[12px] font-normal"
-              data-html2canvas-ignore="true"
-            >
-              <button
-                type="button"
-                onClick={() => setPickerOpen(true)}
-                className="rounded border border-gray-400 px-3 py-1 hover:bg-gray-100"
-              >
-                Upload Stamp 1
-              </button>
-            </div>
-          )}
-        </div>
         <div className="mt-2 flex flex-col items-end absolute bottom-[20mm] left-[15mm] z-50">
           {stamp1 ? (
             // Click the stamp to change it (hover effect is not printed)
@@ -206,11 +177,7 @@ export default function OfficeMemoPage4({ data }: { data: OfficeMemoData }) {
           )}
         </div>
       </div>
-      <StampPicker
-        open={pickerOpen}
-        onClose={() => setPickerOpen(false)}
-        onSelect={(_file, url) => setStamp(url)}
-      />
+   
       <StampPicker
         open={pickerOpen1}
         onClose={() => setPickerOpen1(false)}
